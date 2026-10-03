@@ -12,12 +12,15 @@ Everything runs in Docker. There is nothing to install, no API key required, and
 no package downloads at build time.
 
 ```
-.\run.ps1          # Windows
+run                # Windows (or double-click run.cmd)
 ./run.sh           # Linux and macOS
 ```
 
 That builds the images, runs twenty-five scenarios against three
 configurations, and writes `out/report.md`.
+
+Step-by-step setup, including what to do when a port is taken, is in
+[INSTALL.md](INSTALL.md).
 
 ---
 
@@ -49,12 +52,12 @@ correlation-based detection, not a bug, and the report says so.
 ## Try it
 
 ```
-.\run.ps1 demo       # the narrated single-agent demo, with and without the firewall
-.\run.ps1            # the full three-configuration experiment
-.\run.ps1 test       # 33 assertions that the lab behaves as documented
-.\run.ps1 up         # start the stack and leave it running
-.\run.ps1 console    # open the live firewall console
-.\run.ps1 down       # stop everything
+run demo       # the narrated single-agent demo, with and without the firewall
+run            # the full three-configuration experiment
+run test       # 33 assertions that the lab behaves as documented
+run up         # start the stack and leave it running
+run console    # open the live firewall console
+run down       # stop everything
 ```
 
 On Linux and macOS, use `./run.sh` with the same words.

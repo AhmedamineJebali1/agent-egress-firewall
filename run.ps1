@@ -16,7 +16,6 @@
 [CmdletBinding()]
 param(
     [Parameter(Position = 0)]
-    [ValidateSet('experiment', 'demo', 'up', 'console', 'report', 'test', 'down', 'build', 'logs')]
     [string]$Command = 'experiment'
 )
 
@@ -169,5 +168,21 @@ switch ($Command) {
         Write-Step 'Stopping the lab'
         Invoke-Checked @('compose', 'down', '-v', '--remove-orphans') -AllowFailure
         Write-Note 'Stopped. Reports in .\out are kept.'
+    }
+    default {
+        Write-Host ""
+        Write-Host "  Unknown command: $Command" -ForegroundColor Red
+        Write-Host ""
+        Write-Host "  run              full three-configuration experiment"
+        Write-Host "  run demo         narrated prompt-injection demo"
+        Write-Host "  run test         self-test"
+        Write-Host "  run up           start the stack and leave it running"
+        Write-Host "  run console      open the live firewall console"
+        Write-Host "  run report       rebuild the report"
+        Write-Host "  run build        build images only"
+        Write-Host "  run logs         follow service logs"
+        Write-Host "  run down         stop everything"
+        Write-Host ""
+        exit 2
     }
 }
