@@ -1,0 +1,12 @@
+# Store everything with Unix line endings. A CRLF in entrypoint.sh turns the
+# shebang into "bad interpreter" inside the container, and the same file has to
+# work when cloned on Windows, Linux and macOS.
+* text=auto eol=lf
+
+# PowerShell is the one exception, since it is only ever run on Windows.
+*.ps1 text eol=crlf
+
+# Never normalise binary.
+*.png binary
+*.jpg binary
+*.gz binary

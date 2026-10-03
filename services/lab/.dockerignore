@@ -1,0 +1,5 @@
+*.md
+*_test.go.orig
+.git
+.gitignore
+out/
